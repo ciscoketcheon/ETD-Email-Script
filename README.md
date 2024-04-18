@@ -5,14 +5,17 @@ Cisco ETD is a cloud AI/ML driven email security system that was meant to make s
 This python script is trying to be a temporary fix to close this feature gap. The script will pull ETD report data via API, and attached the JSON data and send an email to administrator. Administrator can then schedule this script in a cron job to generate report at the interval intended. 
 
 
-Environment tested:-
+Pre-requisite:-
 
 * Mac/Linux
-* Python library
+* Working Python & library
   - smtplib
   - json
   - requests
   - datetime
+* ETD API credential - refer to ETD documentation -> 
+* Knowing your ETD instance location (check from the ETD URL)
+
 
 The python library should be from the standard package. If it is not there, then install with pip, example:-
 ```bash
@@ -22,13 +25,20 @@ pip3 install requests
 
 ## Installation (required)
 
-Detailed instructions on how to install, configure, and get the project running. Call out any dependencies. This should be frequently tested and updated to make sure it works reliably, accounts for updated versions of dependencies, etc.
+The main project file will be 'etd_top_target.py' script. Here are the steps to prepare and run the script.
+
+1. Complete the prerequisites, check the library above, get ETD API credential
+2. Clone the repo
+3. Edit the script and fill up API credential and the instance URL
+4. Execute the script
+5. Schedule the script
+
 
 **Sample:**
 
 Clone the repo
 ```bash
-git clone https://github.com/CiscoDevNet/cisco-sdwan-python.git
+git clone https://github.com/ciscoketcheon/ETD-Email-Script.git
 ```
 Go to your project folder
 ```bash
