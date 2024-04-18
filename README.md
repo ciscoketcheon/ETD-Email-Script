@@ -76,7 +76,7 @@ python3 etd_top_target.py
 
 ## Schedule
 
-My sample cron job
+My sample cron job to run at 1am every midnight
 ```bash
 crontab -e
 
