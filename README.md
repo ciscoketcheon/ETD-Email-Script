@@ -10,6 +10,7 @@ The report in this case will be the Top Target with counts of each verdict.
 Pre-requisite:-
 
 * Mac/Linux
+* SMTP server, can be any working one on the network, and allow your script host to relay email
 * Working Python & library
   - smtplib
   - json
