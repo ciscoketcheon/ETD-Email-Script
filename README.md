@@ -4,6 +4,8 @@ Cisco ETD is a cloud AI/ML driven email security system that was meant to make s
 
 This python script is trying to be a temporary fix to close this feature gap. The script will pull ETD report data via API, and attached the JSON data and send an email to administrator. Administrator can then schedule this script in a cron job to generate report at the interval intended. 
 
+The report in this case will be the Top Target with counts of each verdict. 
+
 
 Pre-requisite:-
 
@@ -73,9 +75,11 @@ python3 etd_top_target.py
 
 ## Schedule
 
-My sample cron job /etc/crontab
+My sample cron job
 ```bash
-0 1 * * *     /home/user/ETD_Email_Script/etd_top_target.py
+crontab -e
+
+0 1 * * *     python3 ~/ETD_Email_Script/etd_top_target.py
 ```
 
 ## References and useful links
