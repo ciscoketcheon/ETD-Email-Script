@@ -76,7 +76,7 @@ python3 etd_top_target.py
 
 ## Email
 
-Sample email report looks like this
+Sample email report looks like this. It is not pretty, it can be further improved and customized. 
 ![](etd-email.jpg)
 
 
