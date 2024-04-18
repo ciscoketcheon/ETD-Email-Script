@@ -8,9 +8,17 @@ This python script is trying to be a temporary fix to close this feature gap. Th
 Environment tested:-
 
 * Mac/Linux
-* Python library -
+* Python library
+  - smtplib
+  - json
+  - requests
+  - datetime
 
-...
+The python library should be from the standard package. If it is not there, then install with pip, example:-
+```bash
+pip3 install requests
+```
+
 
 ## Installation (required)
 
