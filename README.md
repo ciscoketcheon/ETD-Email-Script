@@ -74,6 +74,13 @@ Execute with python
 python3 etd_top_target.py
 ```
 
+## Email
+
+Sample email report looks like this
+![](etd-email.jpg)
+
+
+
 ## Schedule (optional)
 
 My sample cron job to run at 1am every midnight
