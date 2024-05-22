@@ -6,6 +6,9 @@ This python script is trying to be a temporary fix to close this feature gap. Th
 
 The report in this case will be the Top Target with counts of each verdict. 
 
+Release update 
+- 23rd May 2024 - ETD API enforced the use of an API Key in every request. Updated the script to include this mandatory query string. 
+
 
 Pre-requisite:-
 
@@ -16,7 +19,7 @@ Pre-requisite:-
   - json
   - requests
   - datetime
-* ETD API client - (From ETD -> Administration -> API Clients)
+* ETD API client credential and API Key - (From ETD -> Administration -> API Clients)
 * Knowing your ETD instance location (check from the ETD URL)
 
 
@@ -60,10 +63,11 @@ Add SMTP server IP, email sender (username) and admin's email address (admin_ema
 
 2. ETD API client credentials
 
-Mandatory field is client_id and client_password, example
+Mandatory field is client_id, client_password and api_key example
 ```bash
 client_id = "ac6991c4-df45-xxxx-xxxx-xxxxxxxxx"
 client_password = "PxVRzLALsETnyrZri9oLiZ_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+api_key = "twBJkLMj8l3pmMWtxxxxxxxxxxxxxxxxxxx"
 ```
 The rest of token_url and report URL is pre-populated with beta instance (api.beta.etc.cisco.com), if you are using other instances, e.g. apjc, then use (api.apjc.etc.cisco.com) 
 
