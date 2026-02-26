@@ -43,22 +43,58 @@ token_url = "https://api.beta.etd.cisco.com/v1/oauth/token"
 report_top_url = "https://api.beta.etd.cisco.com/v1/messages/report/top"
 
 
-
 # Function to send email
-def send_email(subject, message):
-    # Create a multipart message
-    msg = MIMEMultipart()
+def send_email(subject, json_data):
+    # Convert JSON string to Python dict (if needed)
+    if isinstance(json_data, str):
+        data = json.loads(json_data)
+    else:
+        data = json_data
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
+    # Build table rows dynamically
+    rows = ""
+    for target in data["data"]["topTargets"]:
+        rows += f"""
+        <tr>
+            <td style="padding:8px;border:1px solid #ddd;">{target['emailAddress']}</td>
+            <td style="padding:8px;border:1px solid #ddd;color:#e74c3c;font-weight:bold;">{target['malicious']}</td>
+            <td style="padding:8px;border:1px solid #ddd;">{target['phishing']}</td>
+            <td style="padding:8px;border:1px solid #ddd;">{target['bec']}</td>
+            <td style="padding:8px;border:1px solid #ddd;">{target['scam']}</td>
+        </tr>
+        """
+
+    # HTML email body
+    html_body = f"""
+    <html>
+    <body style="font-family:Arial, sans-serif;background-color:#f4f6f8;padding:20px;">
+        <div style="background-color:#ffffff;padding:20px;border-radius:8px;">
+            <h2 style="color:#2c3e50;">📊 ETD Daily Top Targets - {today}</h2>
+
+            <table style="border-collapse:collapse;width:100%;">
+                <tr style="background-color:#2c3e50;color:white;">
+                    <th style="padding:10px;border:1px solid #ddd;">Email Address</th>
+                    <th style="padding:10px;border:1px solid #ddd;">Malicious</th>
+                    <th style="padding:10px;border:1px solid #ddd;">Phishing</th>
+                    <th style="padding:10px;border:1px solid #ddd;">BEC</th>
+                    <th style="padding:10px;border:1px solid #ddd;">Scam</th>
+                </tr>
+                {rows}
+            </table>
+        </div>
+    </body>
+    </html>
+    """
+
+    # Create multipart message
+    msg = MIMEMultipart("alternative")
     msg['From'] = smtp_username
     msg['To'] = admin_email
-    msg['Subject'] = subject
-
-    # Add the message body
-    msg.attach(MIMEText(message, 'plain'))
-
-    # Connect to the SMTP server
+    msg['Subject'] = f"{subject} - {today}"
+    # Attach HTML instead of plain
+    msg.attach(MIMEText(html_body, 'html'))
+    # Send
     with smtplib.SMTP(smtp_server, smtp_port) as server:
-#        server.starttls()
-#        server.login(smtp_username, smtp_password)
         server.sendmail(smtp_username, admin_email, msg.as_string())
 
 

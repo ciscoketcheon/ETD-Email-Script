@@ -7,6 +7,7 @@ This python script is trying to be a temporary fix to close this feature gap. Th
 The report in this case will be the Top Target with counts of each verdict. 
 
 Release update 
+- 26th Feb 2026 - Updated report email template with nicer table
 - 23rd May 2024 - ETD API enforced the use of an API Key in every request. Updated the script to include this mandatory query string. 
 
 
@@ -80,8 +81,8 @@ python3 etd_top_target.py
 
 ## Email
 
-Sample email report looks like this. It is not pretty, it can be further improved and customized. 
-![](etd-email.jpg)
+Sample email report template updated. 
+![](etd-daily.jpg)
 
 
 
